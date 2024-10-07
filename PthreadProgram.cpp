@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <pthread.h>
+#include <unistd.h>
+#include <iostream>
+#include <mutex>
+#include <thread>
+
+using namespace std;
+
+int ile_0;
+
+pthread_mutex_t mutex_0;
+
+uint32_t *bufor_0 = (uint32_t*) malloc(ile_0*sizeof(int));
+
+struct Blok_0 {
+	uint32_t head;
+	uint32_t thaly;
+
+	double x;
+	double y;
+};
+
+void*Wczytaj_0(void*argumenty) {
+	Blok_0*q=(Blok_0*)argumenty;
+
+	cout<<"Podaj ile = ";
+	cin>>ile_0;
+	cout<<endl;
+
+	q->head++;
+
+	if(q->head == ile_0)
+		q->head=0;
+	if(q->head == q->thaly)
+		exit(-1);
+	for(q->head=0; q->head<ile_0; q->head++) {
+		cout<<"Wyraz ["<<q->head<<"] = ";
+		cin>>bufor_0[q->head];
+	}
+	pthread_mutex_unlock(&mutex_0);
+	cout<<endl;
+	return 0;
+}
+
+void*Odczytaj_0(void*argumenty) {
+	Blok_0*q=(Blok_0*)argumenty;
+
+	pthread_mutex_lock((&mutex_0));
+
+	q->thaly++;
+
+	if(q->thaly == ile_0)
+		q->thaly=0;
+		
+	if(q->head == q->thaly)
+		exit(-1);
+		
+	
+	cout<<"ODCZYT WATKU_0"<<endl;
+	cout<<endl;
+		
+	for(q->thaly=0; q->thaly<ile_0; q->thaly++) {
+		cout<<"Wyraz ["<<q->thaly<<"] = "<<bufor_0[q->thaly]<<endl;
+	}
+
+    cout<<"WATEK_0 PO POMNOZENIU PRZEZ X"<<endl;
+	cout<<endl;
+	
+	float x;
+	
+	cout<<"Podaj ile = ";
+	cin>>x;
+	cout<<endl;
+	
+	for(q->thaly=0; q->thaly<ile_0; q->thaly++) {
+		cout<<"Wyraz ["<<q->thaly<<"] = "<<x*bufor_0[q->thaly]<<endl;
+	}
+	
+	return 0;
+}
+
+int main(int argc,const char * argv[]) {
+    
+    pthread_t watek_0;
+    pthread_t watek_1;
+    
+    Blok_0 obiekt_0;
+    
+    pthread_create(&watek_0, NULL,Wczytaj_0,&obiekt_0);
+	pthread_join(watek_0, NULL);
+    pthread_detach(watek_0);
+    
+	pthread_create(&watek_1, NULL,Odczytaj_0,&obiekt_0);
+	pthread_join(watek_1, NULL);
+	pthread_detach(watek_1);
+
+	return 0;
+}
