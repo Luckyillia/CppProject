@@ -12,6 +12,7 @@ private:
     int x;
     int y;
     int z;
+    int sum = 0;
 
 public:
     void methoda(){
@@ -39,7 +40,7 @@ public:
         for (int i = 0; i < x; ++i) {
             for (int j = 0; j < y; ++j) {
                 for (int k = 0; k < z; ++k) {
-                    arr[i][j][k] = rand() % 100 + 1;
+                    arr[i][j][k] = 1;
                 }
             }
         }
@@ -49,19 +50,31 @@ public:
                 for (int k = 0; k < z; ++k) {
                     cout << arr[i][j][k] << " ";
                 }
+                cout<<endl;
             }
+            cout<<endl;
         }
+        cout<<endl;
+        cout<<"Suma przekatnej sescianu"<<endl;
         for (int i = 0; i < x; ++i) {
             for (int j = 0; j < y; ++j) {
-                cout << arr[i][j] << " ";
+                for (int k = 0; k < z; ++k) {
+                    if(i == j && i == k && j == k){
+                        sum +=arr[i][j][k];
+                    }
+                }
             }
-            cout << endl;
         }
+        cout<<sum<<endl;
         cout << endl;
         
         for (int i = 0; i < x; i++) 
         { 
             delete[] arr[i]; 
+            for (int j = 0; j < x; j++) 
+            { 
+                delete[] arr[i][j]; 
+            } 
         } 
         delete[] arr;
     }
