@@ -7,59 +7,56 @@ using namespace std;
 
 class Tablica {
 private:
-    int*** arr;
-    int*** arr2;
-    int x;
-    int y;
-    int z;
+    int** arr;
+    int** arr2;
+    int wiersze;
+    int kolumny;
 
 public:
     void methoda(){
-        cout<<"x"<<endl;
-        cin>>x;
-        cout<<"y"<<endl;
-        cin>>y;
-        cout<<"z"<<endl;
-        cin>>z;
-        cout<<endl;
-        arr = new int**[x];
-        for(int i = 0;i<x;i++){
-            arr[i] = new int*[y];
-            for(int j = 0;j<z;j++){
-                arr[i][j] = new int[z];
-            }
+        cout<<"Podaj wiersze"<<endl;
+        cin>>wiersze;
+        cout<<"Podaj kolumny"<<endl;
+        cin>>kolumny;
+        arr = new int*[wiersze];
+        for(int i = 0;i<wiersze;i++){
+            arr[i] = new int[kolumny];
         }
-        arr2 = new int**[x];
-        for(int i = 0;i<x;i++){
-            arr2[i] = new int*[y];
-            for(int j = 0;j<z;j++){
-                arr2[i][j] = new int[z];
-            }
+        arr2 = new int* [wiersze];
+        for(int i = 0;i<wiersze;i++){
+            arr2[i] = new int[kolumny];
         }
-        for (int i = 0; i < x; ++i) {
-            for (int j = 0; j < y; ++j) {
-                for (int k = 0; k < z; ++k) {
-                    arr[i][j][k] = rand() % 100 + 1;
-                }
+        for (int i = 0; i < wiersze; ++i) {
+            for (int j = 0; j < kolumny; ++j) {
+                arr[i][j] = rand() % 100 + 1;
             }
         }
         cout<<endl;
-        for (int i = 0; i < x; ++i) {
-            for (int j = 0; j < y; ++j) {
-                for (int k = 0; k < z; ++k) {
-                    cout << arr[i][j][k] << " ";
-                }
-            }
-        }
-        for (int i = 0; i < x; ++i) {
-            for (int j = 0; j < y; ++j) {
+        for (int i = 0; i < wiersze; ++i) {
+            for (int j = 0; j < kolumny; ++j) {
                 cout << arr[i][j] << " ";
             }
             cout << endl;
         }
         cout << endl;
-        
-        for (int i = 0; i < x; i++) 
+        cout<<"Liczby parzyste"<<endl;
+        for (int i = 0; i < wiersze; ++i) {
+            for (int j = 0; j < kolumny; ++j) {
+                if(arr[i][j] % 2 == 0){
+                    cout<<arr[i][j]<<" ";
+                }
+            }
+        }
+        cout << endl;
+        cout<< "Liczby nie parzyste"<<endl;
+        for (int i = 0; i < wiersze; ++i) {
+            for (int j = 0; j < kolumny; ++j) {
+                if(arr[i][j] % 2 != 0){
+                    cout<<arr[i][j]<<" ";
+                }
+            }
+        }
+        for (int i = 0; i < wiersze; i++) 
         { 
             delete[] arr[i]; 
         } 
