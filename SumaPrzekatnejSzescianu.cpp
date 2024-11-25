@@ -40,7 +40,7 @@ public:
         for (int i = 0; i < x; ++i) {
             for (int j = 0; j < y; ++j) {
                 for (int k = 0; k < z; ++k) {
-                    arr[i][j][k] = 1;
+                    arr[i][j][k] = rand() % 100 + 1;
                 }
             }
         }
