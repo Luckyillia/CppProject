@@ -54,6 +54,23 @@ public:
 			}
 			cout<<endl;
 		}
+		cout<<endl;
+		for(int i = 0; i<x; i++) {
+			for(int j = 0; j<x; j++) {
+				if(i == j){
+				    int temp = arr[i][j];
+				    arr[i][j] = arr[i][x-i-1];
+				    arr[i][x-i-1] = temp;
+				}
+			}
+		}
+		cout<<"Po zamianie arr1"<<endl;
+		for(int i = 0; i<x; i++) {
+			for(int j = 0; j<x; j++) {
+				cout<<arr[i][j]<<" ";
+			}
+			cout<<endl;
+		}
 	}
 };
 
