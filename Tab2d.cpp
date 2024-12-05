@@ -1,4 +1,3 @@
-// Example program
 #include <iostream>
 #include <string>
 
@@ -83,7 +82,7 @@ class Tab {
             }
             for(int i = 0;i<row;i++){
                 for(int j = 0;j<col;j++){
-                    arra[i][j] = <array[i][j]+arr[i][j];
+                    arra[i][j] = array[i][j]+arr[i][j];
                 }
             }
             return n;
