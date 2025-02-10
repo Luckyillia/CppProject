@@ -9,7 +9,7 @@ using namespace std;
 
 class Master{
     public:
-        void method(){
+        virtual void method(){
             cout<<"Master"<<endl;
         }
 };
