@@ -22,7 +22,6 @@ class A{
         }
     };
     friend void sum(A& , B&);
-    friend void sort(A& , B&);
 };
 
 class B{
@@ -40,7 +39,6 @@ class B{
         }
     };
     friend void sum(A& , B&);
-    friend void sort(A& , B&);
 };
 
 void sum(A& a, B& b){
@@ -62,28 +60,6 @@ void sum(A& a, B& b){
                 std::cout<<"&"<<" ";
             }
             
-        }
-        std::cout<<std::endl;
-    }
-}
-
-void sort_tab(A& a, B& b){
-    int **tab;
-    tab = (int** )calloc(size, sizeof(int* ));
-    for( int i = 0; i < size; i++){
-	    *(tab + i) = (int* )calloc(size, sizeof(int));
-    }    
-    for(int i = 0;i<size;i++){
-        for(int j = 0;j<size;j++){
-            tab[i][j] = a.arr[i][j]+b.arr[i][j];
-        }
-    }
-    for(int i = 0;i<size;i++){
-        std::sort(tab[i], tab[i]+size);
-    }
-    for(int i = 0;i<size;i++){
-        for(int j = 0;j<size;j++){
-            std::cout<<tab[i][j]<<" ";
         }
         std::cout<<std::endl;
     }

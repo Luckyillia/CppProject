@@ -16,6 +16,7 @@ class A{
     
     friend void sum(A& , B&);
     friend void sort(A& , B&);
+    ~A(){}
 };
 
 class B{
@@ -26,6 +27,7 @@ class B{
     
     friend void sum(A& , B&);
     friend void sort(A& , B&);
+    ~B(){}
 };
 
 void sum(A& a, B& b){
